@@ -1,8 +1,20 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_authentication/auth/views/signin_page.dart';
 import 'package:get/get.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+      apiKey: "AIzaSyBSyHMR5dfjwkN0zBzbJpT2Qs-jFEJSDt0",
+      appId: "1:698080349481:web:298a9a7a3f24e81726bb38",
+      messagingSenderId: "698080349481",
+      projectId: "flutterfirebaseauth-b582e",
+    ),
+  );
+  await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
   runApp(const MyApp());
 }
 
