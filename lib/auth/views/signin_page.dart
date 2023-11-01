@@ -8,11 +8,6 @@ class SigninPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var isPasswordHidden = true.obs;
 
-    // ignore: unused_element
-    void toggleVisibility() {
-      isPasswordHidden.toggle().value;
-    }
-
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
@@ -75,7 +70,7 @@ class SigninPage extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerRight,
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () => Get.toNamed('/forgotpassword'),
                       hoverColor: Colors.transparent,
                       child: const Text(
                         "Forgot password",
@@ -89,7 +84,7 @@ class SigninPage extends StatelessWidget {
                       backgroundColor: Colors.teal,
                       foregroundColor: Colors.white,
                       minimumSize: Size(MediaQuery.of(context).size.width * 1,
-                          MediaQuery.of(context).size.height * 0.07),
+                          MediaQuery.of(context).size.height * 0.08),
                     ),
                     onPressed: () {},
                     child: const Text("Sign in"),
@@ -98,7 +93,7 @@ class SigninPage extends StatelessWidget {
                   ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
                         minimumSize: Size(MediaQuery.of(context).size.width * 1,
-                            MediaQuery.of(context).size.height * 0.07),
+                            MediaQuery.of(context).size.height * 0.08),
                       ),
                       onPressed: () {},
                       icon: Image.asset(
@@ -118,7 +113,7 @@ class SigninPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () => Get.toNamed('/signup'),
                     child: const Text(
                       "Sign up here.",
                       style: TextStyle(fontSize: 12, color: Colors.teal),
