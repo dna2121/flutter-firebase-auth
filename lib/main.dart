@@ -25,7 +25,11 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
+        appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.amber,
+          background: Colors.white,
+        ),
         useMaterial3: true,
         fontFamily: 'NotoSansJP',
       ),

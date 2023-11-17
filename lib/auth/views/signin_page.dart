@@ -9,120 +9,123 @@ class SigninPage extends StatelessWidget {
     var isPasswordHidden = true.obs;
 
     return Scaffold(
-      body: Center(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: SizedBox(
-              width: 500,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const SizedBox(height: 25),
-                  const Text(
-                    "Sign in",
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 60,
+              ),
+              Image.asset('assets/images/signin.png', height: 300),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text("Sign in",
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.w700)),
+                ),
+              ),
+              const SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: TextFormField(
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: const InputDecoration(
+                    labelText: "email",
+                    prefixIcon: Icon(Icons.alternate_email),
                   ),
-                  const SizedBox(height: 10),
-                  const Text("Welcome!"),
-                  const SizedBox(height: 20),
-                  TextFormField(
-                    keyboardType: TextInputType.emailAddress,
+                ),
+              ),
+              const SizedBox(height: 10),
+              Obx(
+                () => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: TextFormField(
+                    obscureText: isPasswordHidden.value,
                     decoration: InputDecoration(
-                      labelText: "Email",
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(13),
-                      ),
-                      border: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(13),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  Obx(
-                    () => TextFormField(
-                      keyboardType: TextInputType.emailAddress,
-                      obscureText: isPasswordHidden.value,
-                      decoration: InputDecoration(
-                        labelText: "Password",
-                        suffixIcon: IconButton(
-                            onPressed: () {
-                              isPasswordHidden.value = !isPasswordHidden.value;
-                            },
-                            icon: Icon(isPasswordHidden.value
-                                ? Icons.visibility_off_outlined
-                                : Icons.visibility_outlined)),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.grey),
-                          borderRadius: BorderRadius.circular(13),
-                        ),
-                        border: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.grey),
-                          borderRadius: BorderRadius.circular(13),
-                        ),
+                      labelText: "password",
+                      prefixIcon: const Icon(Icons.lock_outline),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          isPasswordHidden.value = !isPasswordHidden.value;
+                        },
+                        icon: Icon(isPasswordHidden.value
+                            ? Icons.visibility_off_outlined
+                            : Icons.visibility_outlined),
                       ),
                     ),
                   ),
-                  const SizedBox(height: 10),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: InkWell(
-                      onTap: () => Get.toNamed('/forgotpassword'),
-                      hoverColor: Colors.transparent,
-                      child: const Text(
-                        "Forgot password",
-                        style: TextStyle(color: Colors.teal),
-                      ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: InkWell(
+                    onTap: () => Get.toNamed('/forgotpassword'),
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    splashColor: Colors.transparent,
+                    child: const Text(
+                      "Forgot password?",
+                      style: TextStyle(
+                          color: Colors.amber, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  const SizedBox(height: 25),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.teal,
-                      foregroundColor: Colors.white,
-                      minimumSize: Size(MediaQuery.of(context).size.width * 1,
-                          MediaQuery.of(context).size.height * 0.08),
-                    ),
+                ),
+              ),
+              const SizedBox(height: 30),
+              Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: ElevatedButton(
                     onPressed: () {},
-                    child: const Text("Sign in"),
-                  ),
-                  const SizedBox(height: 10),
-                  ElevatedButton.icon(
-                      style: ElevatedButton.styleFrom(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.amber,
                         minimumSize: Size(MediaQuery.of(context).size.width * 1,
-                            MediaQuery.of(context).size.height * 0.08),
-                      ),
-                      onPressed: () {},
-                      icon: Image.asset(
-                        'assets/images/google.png',
-                        height: 20,
-                      ),
-                      label: const Text("Sign in With Google")),
-                  const SizedBox(height: 30),
-                  const Row(
-                    children: [
-                      Expanded(child: Divider()),
-                      SizedBox(width: 20),
-                      Text("Or"),
-                      SizedBox(width: 20),
-                      Expanded(child: Divider()),
-                    ],
+                            MediaQuery.of(context).size.height * 0.06)),
+                    child: const Text(
+                      "Sign in",
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                  )),
+              const SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                        minimumSize: Size(MediaQuery.of(context).size.width * 1,
+                            MediaQuery.of(context).size.height * 0.06)),
+                    onPressed: () {},
+                    icon: Image.asset(
+                      'assets/images/google.png',
+                      height: 20,
+                    ),
+                    label: const Text("Sign in With Google")),
+              ),
+              const SizedBox(height: 10),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Don't have an account?",
+                    style: TextStyle(color: Colors.grey),
                   ),
-                  const SizedBox(height: 20),
                   TextButton(
                     onPressed: () => Get.toNamed('/signup'),
                     child: const Text(
-                      "Sign up here.",
-                      style: TextStyle(fontSize: 12, color: Colors.teal),
+                      "Register here.",
+                      style: TextStyle(
+                          color: Colors.amber, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  const SizedBox(height: 25),
                 ],
               ),
-            ),
+              const SizedBox(height: 25),
+            ],
           ),
         ),
       ),
