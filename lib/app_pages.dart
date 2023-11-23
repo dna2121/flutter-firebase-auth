@@ -1,6 +1,7 @@
 import 'package:flutter_firebase_authentication/auth/views/forgot_password_page.dart';
 import 'package:flutter_firebase_authentication/auth/views/signin_page.dart';
 import 'package:flutter_firebase_authentication/auth/views/signup_page.dart';
+import 'package:flutter_firebase_authentication/welcome_page.dart';
 import 'package:get/get.dart';
 
 class AppPages {
@@ -16,6 +17,10 @@ class AppPages {
     GetPage(
       name: '/forgotpassword',
       page: () => const ForgotPasswordPage(),
+    ),
+     GetPage(
+      name: '/welcomepage',
+      page: () => const WelcomePage(),
     )
   ];
 }

@@ -1,4 +1,6 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_authentication/auth/controller/auth_controller.dart';
 import 'package:get/get.dart';
 
 class SigninPage extends StatelessWidget {
@@ -7,6 +9,8 @@ class SigninPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var isPasswordHidden = true.obs;
+    var emailController = TextEditingController();
+    var passwordController = TextEditingController();
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -30,6 +34,7 @@ class SigninPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextFormField(
+                  controller: emailController,
                   keyboardType: TextInputType.emailAddress,
                   decoration: const InputDecoration(
                     labelText: "email",
@@ -42,6 +47,7 @@ class SigninPage extends StatelessWidget {
                 () => Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: TextFormField(
+                    controller: passwordController,
                     obscureText: isPasswordHidden.value,
                     decoration: InputDecoration(
                       labelText: "password",
@@ -80,7 +86,11 @@ class SigninPage extends StatelessWidget {
               Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      AuthController.instance.signIn(
+                          emailController.text.trim(),
+                          passwordController.text.trim());
+                    },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.amber,
                         minimumSize: Size(MediaQuery.of(context).size.width * 1,
@@ -105,24 +115,28 @@ class SigninPage extends StatelessWidget {
                     ),
                     label: const Text("Sign in With Google")),
               ),
-              const SizedBox(height: 10),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    "Don't have an account?",
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                  TextButton(
-                    onPressed: () => Get.toNamed('/signup'),
-                    child: const Text(
-                      "Register here.",
-                      style: TextStyle(
-                          color: Colors.amber, fontWeight: FontWeight.bold),
+              const SizedBox(height: 20),
+              RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(
+                  children: [
+                    const TextSpan(
+                      text: "Don't have an account?",
+                      style: TextStyle(color: Colors.grey),
                     ),
-                  ),
-                ],
+                    TextSpan(
+                      text: " Register here.",
+                      style: const TextStyle(
+                        color: Colors.amber,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          Get.toNamed('/signup');
+                        },
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(height: 25),
             ],

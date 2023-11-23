@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_authentication/auth/controller/auth_controller.dart';
 
 class SignupPage extends StatelessWidget {
   const SignupPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var emailController = TextEditingController();
+    var passwordController = TextEditingController();
+
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -25,6 +29,7 @@ class SignupPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextFormField(
+                  controller: emailController,
                   decoration: const InputDecoration(
                     labelText: "email",
                     prefixIcon: Icon(Icons.alternate_email),
@@ -35,6 +40,7 @@ class SignupPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextFormField(
+                  controller: passwordController,
                   decoration: const InputDecoration(
                     labelText: "password",
                     prefixIcon: Icon(Icons.lock_outline),
@@ -55,7 +61,10 @@ class SignupPage extends StatelessWidget {
               Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      AuthController.instance
+                          .signUp(emailController.text.trim(), passwordController.text);
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.amber,
                       minimumSize: Size(MediaQuery.of(context).size.width * 1,
