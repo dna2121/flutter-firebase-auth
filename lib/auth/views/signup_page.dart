@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_authentication/auth/controller/auth_controller.dart';
+import 'package:get/get.dart';
 
 class SignupPage extends StatelessWidget {
   const SignupPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var isPasswordHidden = true.obs;
     var emailController = TextEditingController();
     var passwordController = TextEditingController();
 
@@ -37,13 +39,24 @@ class SignupPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: TextFormField(
-                  controller: passwordController,
-                  decoration: const InputDecoration(
-                    labelText: "password",
-                    prefixIcon: Icon(Icons.lock_outline),
+              Obx(
+                () => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: TextFormField(
+                    obscureText: isPasswordHidden.value,
+                    controller: passwordController,
+                    decoration: InputDecoration(
+                      labelText: "password",
+                      prefixIcon: const Icon(Icons.lock_outline),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          isPasswordHidden.value = !isPasswordHidden.value;
+                        },
+                        icon: Icon(isPasswordHidden.value
+                            ? Icons.visibility_off_outlined
+                            : Icons.visibility_outlined),
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -62,8 +75,8 @@ class SignupPage extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: ElevatedButton(
                     onPressed: () {
-                      AuthController.instance
-                          .signUp(emailController.text.trim(), passwordController.text);
+                      AuthController.instance.signUp(
+                          emailController.text.trim(), passwordController.text);
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.amber,
