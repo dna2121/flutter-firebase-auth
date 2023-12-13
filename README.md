@@ -1,16 +1,11 @@
-# flutter_firebase_authentication
+# Firebase Authentication with Flutter
 
-A Flutter Project with Firebase Auth.
+## User Interface
+### Sign in
+<img src="https://github.com/dna2121/flutter-firebase-auth/assets/80125535/eac65ac0-0895-47f7-a6f4-8194fb39350e" alt="drawing" width="200"/>
 
-## Getting Started
+### Sign up
+<img src="https://github.com/dna2121/flutter-firebase-auth/assets/80125535/fc1e1610-a214-4fb9-b181-11be17ae8e7c](https://github.com/dna2121/flutter-firebase-auth/assets/80125535/fc1e1610-a214-4fb9-b181-11be17ae8e7c" alt="drawing" width="200"/>
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Reset password
+<img src="https://github.com/dna2121/flutter-firebase-auth/assets/80125535/3d79633b-7d47-4f51-81ed-441afbf9bf47" alt="drawing" width="200"/>
