@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
+  final emailController = TextEditingController();
 
   //username, password, name
   late Rx<User?> _user;
@@ -94,5 +95,24 @@ class AuthController extends GetxController {
 
   void signOut() async {
     await auth.signOut();
+  }
+
+  void resetPassword() async {
+    try {
+      await auth.sendPasswordResetEmail(email: emailController.text);
+
+      Get.snackbar("Reset Password", "The email has been sent to your email!",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.grey[850],
+          colorText: Colors.white);
+
+      emailController.clear();
+      Get.toNamed("/signin");
+    } on FirebaseAuthException catch (e) {
+      Get.showSnackbar(GetSnackBar(
+        message: e.message,
+        duration: const Duration(seconds: 3),
+      ));
+    }
   }
 }
