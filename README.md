@@ -6,3 +6,5 @@ This application is designed using the DART language with the Flutter framework.
 
 ##
 Dart version 3.2.3 • Flutter version 3.16.4
+
+image assets owned by : https://www.freepik.com/author/studiogstock
