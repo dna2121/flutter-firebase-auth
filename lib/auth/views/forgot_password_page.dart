@@ -16,7 +16,7 @@ class ForgotPasswordPage extends GetView<AuthController> {
             const SizedBox(height: 20),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text("Forgot password",
+              child: Text("Reset password",
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700)),
             ),
             const SizedBox(height: 5),
